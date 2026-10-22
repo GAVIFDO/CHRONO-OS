@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHRONO-OS 95 :: Retro Pixel CRT Operating System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-synthwave">
+  <div id="boot-screen">
+    <div class="boot-header">
+      <div>
+        <div class="boot-logo">CHRONO-BIOS v4.20 :: PIXEL-CRT CORP</div>
+        <div>640K Base RAM OK :: SYSTEM ARCHITECT: GAVIRU FERNANDO</div>
+      </div>
+      <button id="skip-boot-btn" class="retro-btn" type="button">FAST BOOT &gt;&gt;</button>
+    </div>
+    <div id="boot-log" class="boot-log"></div>
+    <div>
+      <div id="boot-status-text">Initializing Phosphor CRT Subsystem...</div>
+      <div class="boot-progress-wrap">
+        <div id="boot-progress-bar" class="boot-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="crt-wrapper" class="crt-curved">
+    <canvas id="wallpaper-canvas"></canvas>
+    <div id="scanline-overlay"></div>
+
+    <main id="desktop" aria-label="Retro OS Desktop"></main>
+
+    <aside id="desktop-hud" aria-label="Desktop Time and Creator HUD">
+      <div class="hud-title">
+        <span>⏱️ CHRONO-TIME DECK</span>
+        <button id="hud-fmt-btn" class="retro-btn" type="button" style="padding:2px 5px;font-size:12px;">24H</button>
+      </div>
+      <div class="retro-dark-inset hud-clock-box">
+        <div id="hud-digital-clock" class="hud-time-main">00:00:00</div>
+        <div id="hud-date-text" class="hud-date-sub">LOADING DATE...</div>
+      </div>
+      <div class="retro-inset hud-grid-meta">
+        <div>UPTIME: <strong id="hud-uptime">00:00:00</strong></div>
+        <div>UTC: <strong id="hud-utc-time">00:00</strong></div>
+      </div>
+      <div class="retro-inset hud-stopwatch">
+        <span id="hud-sw-display" class="pixel-font" style="font-size:10px;">SW 00:00.0</span>
+        <div style="display:flex;gap:3px;">
+          <button id="hud-sw-toggle" class="retro-btn" type="button" style="padding:2px 6px;font-size:14px;">START</button>
+          <button id="hud-sw-reset" class="retro-btn" type="button" style="padding:2px 6px;font-size:14px;">RST</button>
+        </div>
+      </div>
+      <div class="creator-credit-badge">
+        ★ MADE BY GAVIRU FERNANDO ★
+      </div>
+    </aside>
+
+    <div id="windows-container"></div>
+
+    <div id="toast-container"></div>
+
+    <nav id="start-menu" class="hidden" aria-label="Start Menu">
+      <div class="start-banner"><span>CHRONO-OS 95</span></div>
+      <div class="start-items">
+        <button class="start-item" type="button" data-open-app="notepad"><span>📝</span><span>RetroPad Editor</span></button>
+        <button class="start-item" type="button" data-open-app="arcade"><span>🕹️</span><span>Pixel Arcade 3-in-1</span></button>
+        <button class="start-item" type="button" data-open-app="calculator"><span>🧮</span><span>Sci-Calc 95</span></button>
+        <button class="start-item" type="button" data-open-app="paint"><span>🎨</span><span>Pixel Art Studio</span></button>
+        <button class="start-item" type="button" data-open-app="viewer"><span>🖼️</span><span>RetroView Image Lab</span></button>
+        <button class="start-item" type="button" data-open-app="synth"><span>🎹</span><span>Chiptune Synth Deck</span></button>
+        <button class="start-item" type="button" data-open-app="terminal"><span>💻</span><span>CHRONO-DOS Shell</span></button>
+        <button class="start-item" type="button" data-open-app="explorer"><span>📁</span><span>File Manager C:/</span></button>
+        <button class="start-item" type="button" data-open-app="tasks"><span>⏱️</span><span>Tasks &amp; Pomodoro</span></button>
+        <button class="start-item" type="button" data-open-app="sysmon"><span>📈</span><span>System Diagnostics</span></button>
+        <button class="start-item" type="button" data-open-app="settings"><span>⚙️</span><span>CRT &amp; Theme Control</span></button>
+        <div class="start-divider"></div>
+        <button id="tile-windows-btn" class="start-item" type="button"><span>🪟</span><span>Cascade Windows</span></button>
+        <button id="reboot-os-btn" class="start-item" type="button"><span>🔌</span><span>Reboot BIOS</span></button>
+        <div class="start-divider"></div>
+        <div style="padding:6px 10px;font-size:15px;color:var(--accent-secondary);text-align:center;">Made by Gaviru Fernando</div>
+      </div>
+    </nav>
+
+    <footer id="taskbar">
+      <button id="start-btn" class="retro-btn" type="button">📼 START</button>
+      <div id="taskbar-windows"></div>
+      <div id="system-tray" class="retro-inset">
+        <button id="tray-crt-btn" class="tray-icon-btn" type="button" title="Toggle CRT Scanlines">📺 CRT</button>
+        <button id="tray-audio-btn" class="tray-icon-btn" type="button" title="Toggle 8-Bit Audio">🔊 SFX</button>
+        <span style="font-size:15px;opacity:0.85;">By Gaviru Fernando</span><span>|</span><span id="tray-clock">12:00 PM</span>
+      </div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
